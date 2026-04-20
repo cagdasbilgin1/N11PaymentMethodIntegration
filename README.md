@@ -8,7 +8,9 @@ The application currently supports:
 - PayPal
 - Apple Pay
 
-The main idea is simple: each payment method implements the same `PaymentMethod` interface, and the system resolves the correct one through `PaymentMethodRegistry`. This keeps the payment flow easy to extend and fits well with SOLID, especially Open/Closed Principle and Single Responsibility Principle.
+The main idea is simple: each payment method implements the same `PaymentMethod` interface. The app discovers these implementations with reflection, registers them through `PaymentMethodRegistry`, and then runs the payment flow through `PaymentProcessor`.
+
+This keeps the example easy to extend while still showing SOLID principles, especially Open/Closed Principle and Single Responsibility Principle.
 
 ## Run
 
@@ -17,4 +19,4 @@ javac -d out $(find src -name '*.java')
 java -cp out Main
 ```
 
-When you run the app, it prints a sample payment result for all available payment methods.
+When you run the app, it asks which payment method you want to use and prints a sample result for that choice.
